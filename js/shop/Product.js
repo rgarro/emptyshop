@@ -1,7 +1,8 @@
-function Product(p){
+function Product(name,price,description){
 	ShopObject.call(this,p);
-	
+	this.name = name;
 	this.Price = 0;
+	this.description = description;
 	this.qty = 1;
 	this.subtotal= 0;
 }
