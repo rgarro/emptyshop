@@ -10,16 +10,20 @@ describe("Shop",function(){
 		expect(testshop).toHaveMethod('loadProducts');
 	});
 	
-		 it("should Have displayTpl string",function(){
+		 it("should Have source string",function(){
 			expect(testshop).toHaveString("source");
 			});
 		 
-		 it("should Have template string",function(){
-			expect(testshop).toHaveString("template");
+		 it("should Have template method",function(){
+			expect(testshop).toHaveMethod("template");
 			});
 		 
 		 it("should Have html string",function(){
 			expect(testshop).toHaveString("html");
+			});
+		 
+		 it("should Have productsLoaded boolean",function(){
+			expect(testshop).toHaveBoolean("productsLoaded");
 			});
 		 
 	describe("Calling loadProducts",function(){
@@ -30,12 +34,12 @@ describe("Shop",function(){
 		it("after call Products is an array of Product ",function(){
 		   testshop.loadProducts();
 		   expect(testshop.Products.length > 0).toBeTrue();
-		   expect(typeof testshop.Product[0] == Product).toBeTrue;
+		   expect(typeof testshop.Product[0] == Product).toBeTrue();
 		});
 	});	 
 		
-		 it("should Have display method",function(){
-			expect(testshop).toHaveMethod('display');
+		 it("should Have Display method",function(){
+			expect(testshop).toHaveMethod('Display');
 			});	 
 		 
 		 it("should Have Cart object",function(){

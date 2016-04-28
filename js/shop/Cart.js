@@ -45,5 +45,5 @@ Cart.prototype.Totals = function(){
 Cart.prototype.Display = function(){
 	this.Totals();
 	this.html = this.template({items:this.Items,delivery:this.delivery,taxes:this.taxes,total:this.total});
-	$("#cardContainer").html(html);
+	$("#cartContainer").html(html);
 };

@@ -10,12 +10,12 @@ describe("Cart",function(){
 	   expect(testcart).toHaveArray("Items");
 	});
 		 
-		 it("should Have displayTpl string",function(){
+		 it("should Have source string",function(){
 			expect(testcart).toHaveString("source");
 			});
 		 
-		 it("should Have template string",function(){
-			expect(testcart).toHaveString("template");
+		 it("should Have template method",function(){
+			expect(testcart).toHaveMethod("template");
 			});
 		 
 		 it("should Have html string",function(){
@@ -26,12 +26,12 @@ describe("Cart",function(){
 			expect(testcart).toHaveMethod('Add');
 			});
 		 
-		 it("should Have Taxes method",function(){
+		 /*it("should Have Taxes method",function(){
 			expect(testcart).toHaveMethod('Taxes');
-			});
+			});*/
 		 
-		 it("should Have Total method",function(){
-			expect(testcart).toHaveMethod('Total');
+		 it("should Have Totals method",function(){
+			expect(testcart).toHaveMethod('Totals');
 			});
 		 
 		describe("calling Add",function(){
@@ -42,6 +42,10 @@ describe("Cart",function(){
 			   testcart.add(0,shop.Produtcs);
 			   expect(begin < testcart.Items.length).toBeTrue();
 			});
+				 
+				 it("Items should be array of Product",function(){
+					expect(typeof testcart.Items[0] == Product).toBeTrue();
+					});	 
 		});	 
 		 
 });
