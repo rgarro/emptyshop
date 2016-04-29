@@ -3,9 +3,10 @@ function Shop(p){
 	this.productsLoaded = new Boolean(false);
 	this.Products = [];
 	this.i=0;
-	this.source = "{{#each products}}<li>{{name}} ${{price}}</li> {{/each}}";
+	this.source = "{{#each products}}<li>{{name}} ${{Price}} <button index='{{id}}' type='button' class='addbtn btn btn-primary btn-sm'>ADD</button></li> {{/each}}";
 	this.template = Handlebars.compile(this.source);
 	this.html = "";
+	this.Cart = new Cart();
 }
 
 Shop.prototype = Object.create(ShopObject.prototype);
@@ -14,9 +15,9 @@ Shop.prototype.constructor = Shop;
 
 Shop.prototype.loadProducts = function(obj){
 	if(this.i < obj.length){
+		var c = obj[this.i];
 		if(c.title !== undefined && c.price !== undefined && c.description !== undefined){
-			var c = obj[this.i]
-			this.Products.push(new Product(c.title,c.price,c.description));
+			this.Products.push(new Product(c.title,c.price,c.description,this.i));
 			this.i ++;
 			this.loadProducts(obj);
 		}else{
@@ -33,7 +34,7 @@ Shop.prototype.loadProducts = function(obj){
 Shop.prototype.Display = function(){
 	if(this.productsLoaded){
 		this.html = this.template({products:this.Products});
-		$("#shopContainer").html(html);
+		$("#shopContainer").html(this.html);
 	}else{
 		throw new Error("call loadProducts first");
 	}

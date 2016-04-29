@@ -3,7 +3,7 @@ function Cart(p){
 	
 	this.indexes = [];
 	this.Items = [];
-	this.source = "{{#each items}}<li>{{qty}} {{name}} {{subtotal}}</li> {{/each}}<li>${{delivery}}</li><li>${{taxes}}</li><li>${{total}}</li>";
+	this.source = "{{#each items}}<li>{{qty}} {{name}} {{subtotal}}</li> {{/each}}<li>Delivery ${{delivery}}</li><li>Taxes ${{taxes}}</li><li>Total ${{total}}</li>";
 	this.template = Handlebars.compile(this.source);
 	this.html = "";
 	this.delivery = 1.3;
@@ -33,7 +33,7 @@ Cart.prototype.Add = function(index,productList){
 
 Cart.prototype.Totals = function(){
 	if(this.c < this.Items.length){
-		this.total = this.total + this.items[this.c].subtotal;
+		this.total = this.total + this.Items[this.c].subtotal;
 		this.c ++;
 		this.Totals();
 	}else{
@@ -45,5 +45,5 @@ Cart.prototype.Totals = function(){
 Cart.prototype.Display = function(){
 	this.Totals();
 	this.html = this.template({items:this.Items,delivery:this.delivery,taxes:this.taxes,total:this.total});
-	$("#cartContainer").html(html);
+	$("#cartContainer").html(this.html);
 };

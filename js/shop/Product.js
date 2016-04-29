@@ -1,10 +1,11 @@
-function Product(name,price,description){
+function Product(name,price,description,id,p){
 	ShopObject.call(this,p);
 	this.name = name;
-	this.Price = 0;
+	this.Price = price;
 	this.description = description;
 	this.qty = 1;
 	this.subtotal= 0;
+	this.id = id;
 }
 
 Product.prototype = Object.create(ShopObject.prototype);
